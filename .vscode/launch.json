@@ -1,0 +1,66 @@
+
+        {
+            "name": "flutter_sample",
+            "request": "launch",
+            "type": "dart",
+            "configurations": [
+                {
+                    {
+                        "name": "Launch index.html",
+                        "type": "firefox",
+                        "request": "launch",
+                        "reAttach": true,
+                        "file": "${workspaceFolder}/index.html"
+                    }
+                },
+
+
+               
+
+                {
+                    {
+                        "name": "Launch index.html",
+                        "type": "firefox",
+                        "request": "launch",
+                        "reAttach": true,
+                        "file": "${workspaceFolder}/index.html"
+                    }
+                },
+                {
+                    "type": "firefox",
+                    "request": "launch",
+                    "reAttach": true,
+                    "name": "Launch add-on",
+                    "addonPath": "${workspaceFolder}"
+                },
+                {
+                    "type": "firefox",
+                    "request": "launch",
+                    "reAttach": true,
+                    "name": "Launch localhost",
+                    "url": "http://localhost/index.html",
+                    "webRoot": "${workspaceFolder}"
+                },
+            {
+                "type": "firefox",
+                "request": "launch",
+                "reAttach": true,
+                "name": "Launch index.html",
+                "file": "${workspaceFolder}/index.html"
+            }
+            ]
+        },
+        {
+            "name": "flutter_sample (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter_sample (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
