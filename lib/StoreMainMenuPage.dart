@@ -7,14 +7,10 @@ import 'package:http/http.dart';
 import 'LoginPage.dart';
 import 'ShoppingBasket.dart';
 
-
 import 'BranchesPage.dart';
 import 'DescriptionPage.dart';
 import 'Product.dart';
 import 'ShopBottomNavigator.dart';
-
-
-
 
 class Store extends StatefulWidget {
   const Store({super.key});
@@ -28,7 +24,6 @@ class _StoreState extends State<Store> {
 
   @override
   void initState() {
-    
     super.initState();
     fetchItems();
   }
@@ -55,8 +50,8 @@ class _StoreState extends State<Store> {
               color: Colors.black45,
             ),
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const BranchesPage()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const BranchesPage()));
             },
           ),
           IconButton(
@@ -66,6 +61,11 @@ class _StoreState extends State<Store> {
             ),
             onPressed: () {
               Navigator.of(context).push(PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) {
+                  return ShoppingBasket();
+                },
+              ));
+              /*Navigator.of(context).push(PageRouteBuilder(
                   transitionDuration: const Duration(seconds: 1),
                   pageBuilder: (BuildContext context,
                       Animation<double> animation,
@@ -84,7 +84,7 @@ class _StoreState extends State<Store> {
                           parent: animation,
                           curve: Curves.fastOutSlowIn)),
                     );
-                  }));
+                  }));*/
             },
           )
         ],
@@ -103,14 +103,12 @@ class _StoreState extends State<Store> {
       bottomNavigationBar: const ShopBottomNagiv(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red[900],
-        onPressed: () {  },
+        onPressed: () {},
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-
-
 
   void fetchItems() async {
     var url = "http://welearnacademy.ir/flutter/products_list.json";
@@ -163,4 +161,3 @@ Card generateItem(Product product, context) {
     ),
   );
 }
-

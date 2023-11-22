@@ -147,20 +147,23 @@ class _LoginWidgetState extends State<LoginWidget> {
       {required BuildContext context,
       required String username,
       required String password}) async {
-    // var url="http://welearnacademy.ir/flutter/api/?type=login";
+    var url="http://welearnacademy.ir/flutter/api/?type=login";
 
-    var url = "https://pooyapendar.ir/login.json";اها
+    // var url = "https://pooyapendar.ir/login.json";
     var body = Map<String, dynamic>();
     body["username"] = username;
     body["password"] = password;
-    Response response = await post(url as Uri, body: body);
+    Response response = await post(Uri.parse(url), body: body);
     if (response.statusCode == 200) {
       //successful
+      print("response : $response");
       var loginJson = json.decode(utf8.decode(response.bodyBytes));
       var model = LoginResponseModel(loginJson["result"], loginJson["message"]);
       if (model.result == 0) {
         showMySnackBar(context, model.message);
       } else if (model.result == 1) {
+        print("responseeee11111 : $response");
+
         Navigator.of(context).pushReplacement(PageRouteBuilder(
             transitionDuration: const Duration(milliseconds: 300),
             pageBuilder: (BuildContext context, Animation<double> animation,
@@ -180,7 +183,16 @@ class _LoginWidgetState extends State<LoginWidget> {
       }
     } else {
       //error
-      showMySnackBar(context, "درخواست با خطا مواجه شد");
+      showDialog(context: context, builder: (context) {
+        return Container(
+          width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              color: Colors.white
+            ),
+            child: Text("درخواست با خطا مواجه شد"));
+      },);
+      // showMySnackBar(context, "درخواست با خطا مواجه شد");
     }
   }
 

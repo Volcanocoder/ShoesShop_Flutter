@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/StoreMainMenuPage.dart';
 import 'package:http/http.dart';
 import 'LoginPage.dart';
 import 'ShoppingBasket.dart';
@@ -22,7 +23,8 @@ class MainMaterial extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:LoginWidget(),
+      home: Store(),
+      // home:LoginWidget(),
     );
   }
 }
