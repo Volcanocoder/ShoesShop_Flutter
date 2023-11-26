@@ -1,6 +1,9 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/StoreMainMenuPage.dart';
+
+import 'ShoppingBasket.dart';
 
 
 class ShopBottomNagiv extends StatelessWidget {
@@ -10,8 +13,6 @@ class ShopBottomNagiv extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
          color: Colors.white,
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
         clipBehavior: Clip.antiAlias,
 
       child: SizedBox(
@@ -21,28 +22,35 @@ class ShopBottomNagiv extends StatelessWidget {
          children: [
           SizedBox(
             height: 50,
-            width: MediaQuery.of(context).size.width/2-20,
-            child: const Row(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.home,color:Colors.blueGrey),
-                Icon(Icons.person_outline,color:Colors.blueGrey)
+                InkWell(
+                  onTap:(){
+                    Navigator.of(context).push(PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) {
+                          return Store();
+                        }
+                    ));
+                  },
+                    child: const Icon(Icons.home,color:Colors.blueGrey)),
+                const Icon(Icons.person_outline,color:Colors.blueGrey),
+                const Icon(Icons.search,color:Colors.blueGrey),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) {
+                        return ShoppingBasket();
+                      }
+                    ));
+                  },
+                    child: Icon(Icons.shopping_basket,color:Colors.blueGrey))
               ],
             ),
 
           ),
-          SizedBox(
-            height: 50,
-             width: MediaQuery.of(context).size.width/2-20,
-             child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.search,color:Colors.blueGrey),
-                Icon(Icons.shopping_basket,color:Colors.blueGrey)
-              ],
-            ),
 
-          )
          ], 
         ),
         ),

@@ -37,10 +37,7 @@ class _StoreState extends State<Store> {
           style: TextStyle(color: Colors.black45, fontFamily: "Vazir"),
         ),
         centerTitle: true,
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black45,
-        ),
+
         backgroundColor: Colors.white,
         elevation: 0,
         actions: <Widget>[
@@ -89,36 +86,36 @@ class _StoreState extends State<Store> {
           )
         ],
       ),
+     /* body: ListView.builder(itemBuilder: (context, index) {
+        return generateItem(_items[index], context);
+      },),*/
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: GridView.count(
           crossAxisCount: 2,
-          crossAxisSpacing: 10,
+          crossAxisSpacing: 5,
           mainAxisSpacing: 15,
           children: List.generate(_items.length, (int position) {
             return generateItem(_items[position], context);
+            // return Text(_items[position].productName);
           }),
         ),
       ),
       bottomNavigationBar: const ShopBottomNagiv(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red[900],
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
     );
   }
 
   void fetchItems() async {
-    var url = "http://welearnacademy.ir/flutter/products_list.json";
-    Response response = await get(url as Uri);
+    var url = "https://pooyapendar.ir/product.json";
+    Response response = await get(Uri.parse(url));
     setState(() {
       var productJson = json.decode(utf8.decode(response.bodyBytes));
       for (var i in productJson) {
-        var productItem = Product(i['product_name'], i['id'], i['price'],
+        var productItem = Product(i['product_name'], i['id'], i['price'].toString(),
             i['image_url'], i['off'], i['description']);
         _items.add(productItem);
+        print(productItem);
       }
     });
   }
@@ -140,21 +137,24 @@ Card generateItem(Product product, context) {
           children: <Widget>[
             Container(
               width: 130,
-              height: 130,
+              height: 110,
               child: Image.network(product.imageUrl),
             ),
-            Text(
-              product.price,
-              style: TextStyle(
-                  fontFamily: "Vazir", color: Colors.red[700], fontSize: 16.0),
-            ),
+
             Text(
               product.productName,
               style: const TextStyle(
                   fontFamily: "Vazir",
                   color: Color(0xFF575E67),
                   fontSize: 14.0),
-            )
+            ),
+            Text(
+              product.price + " تومان ",
+              textAlign: TextAlign.center,
+              textDirection: TextDirection.rtl,
+              style: TextStyle(
+                  fontFamily: "Vazir", color: Colors.red[700], fontSize: 16.0),
+            ),
           ],
         ),
       ),

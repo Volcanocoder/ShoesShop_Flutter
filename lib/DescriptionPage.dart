@@ -18,30 +18,23 @@ class DescriptionPage extends StatelessWidget {
           style: TextStyle(color: Colors.black45, fontFamily: "Vazir"),
         ),
         centerTitle: true,
-        leading: const Icon(
-          Icons.arrow_back,
-          color: Colors.black45,
+        leading: InkWell(
+          onTap: (){
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.black45,
+          ),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: Builder(
-        builder:(context)=> Column(
+        builder:(context)=> ListView(
+          padding: EdgeInsets.all(8.0),
           children: <Widget>[
-            const SizedBox(
-              height: 20,
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Text(
-                  "Shoes",
-                  style: TextStyle(
-                      fontFamily: "Varela", color: Colors.red[700], fontSize: 40),
-                ),
-              ),
-            ),
+
             const SizedBox(
               height: 30,
             ),
@@ -53,21 +46,26 @@ class DescriptionPage extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
             ),
-            Text(
-              _product.price,
-              style: TextStyle(
-                color: Colors.red[700],
-                fontFamily: "Vazir",
-                fontSize: 30,
-              ),
-            ),
-            Text(
-              _product.productName,
-              style: TextStyle(
-                color: Colors.grey[700],
-                fontFamily: "Vazir",
-                fontSize: 20,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  _product.price + " تومان ",
+                  style: TextStyle(
+                    color: Colors.red[700],
+                    fontFamily: "Vazir",
+                    fontSize: 25,
+                  ),
+                ),
+                Text(
+                  _product.productName,
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontFamily: "Vazir",
+                    fontSize: 25,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 40,
@@ -82,51 +80,61 @@ class DescriptionPage extends StatelessWidget {
                   fontFamily: "Vazir",
                 ),
                 textDirection: TextDirection.rtl,
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.justify,
               ),
             ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
-                  child: GestureDetector(
-                    onTap: () {
-                      // ignore: avoid_print
-                      print("added to basket ${_product.productName}");
-                      ShoppingBasketData.getInstance().basketItems.add(_product);
-                      // ignore: avoid_print
-                      print(ShoppingBasketData.getInstance().basketItems.length);
-                      // ignore: unused_local_variable
-                      var showsnachbar;
-                      showsnachbar = Scaffold.of(context).showBottomSheet(
-                        SnackBar(
-                          content: Text("${_product.productName} "+"به سبد خرید شما افزوده شد",
-                              style: const TextStyle(fontSize: 15,fontFamily: "Vazir")),
-                        ) as WidgetBuilder
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.red[600],
-                          borderRadius: const BorderRadius.all(Radius.circular(10))),
-                      width: MediaQuery.of(context).size.width - 50,
-                      height: 70,
-                      child: const Center(
-                        child: Text(
-                          "افزودن به سبد خرید",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Vazir",
-                              fontSize: 18),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            )
+
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5.0),
+        child: GestureDetector(
+          onTap: () {
+            // ignore: avoid_print
+            print("added to basket ${_product.productName}");
+
+            // ignore: avoid_print
+            // ShoppingBasketData _basket = ShoppingBasketData.getInstance();
+            print("Get Cart instance");
+            // _basket.basketItems += [_product];
+            print(ShoppingBasketData.getInstance().basketItems.length);
+            ShoppingBasketData.getInstance().basketItems.add(_product);
+            print(ShoppingBasketData.getInstance().basketItems.length);
+
+            // ignore: unused_local_variable
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  " به سبد خرید شما اضافه شد",
+                  style: TextStyle(fontSize: 16),
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.center,
+                ),
+
+                duration: Duration(seconds: 2),
+                backgroundColor: Colors.green, // رنگ پس زمینه SnackBar
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
+
+          },
+          child: Container(
+            decoration: BoxDecoration(
+                color: Colors.red[600],
+                borderRadius: const BorderRadius.all(Radius.circular(10))),
+            width: MediaQuery.of(context).size.width - 50,
+            height: 70,
+            child: const Center(
+              child: Text(
+                "افزودن به سبد خرید",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Vazir",
+                    fontSize: 18),
+              ),
+            ),
+          ),
         ),
       ),
     );
