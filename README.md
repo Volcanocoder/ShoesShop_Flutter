@@ -21,12 +21,15 @@ git clone https://github.com/Volcanocoder/ShoesShop_Flutter.git
 
 2. Navigate to the project directory:
 
+```bash
 cd flutter-store
-
+```
 
 3. Run the project:
 
+```bash
 flutter run
+```
 
 ## Contribution
 If you're interested, you can contribute to improving and expanding this project. Additionally, if you have any issues or suggestions, please feel free to share them with us.
@@ -35,7 +38,7 @@ If you're interested, you can contribute to improving and expanding this project
 This project is licensed under the MIT License. For more information, please see the LICENSE file.
 
 ## Contact
-For inquiries and to stay updated on the latest developments, please meseage us at: t.me/volcanocoder
+For inquiries and to stay updated on the latest developments, please massage us at: t.me/volcanocoder
 
 
 This README.md provides details about the features, installation and setup, contribution guidelines, license, and contact information for your project. It's best to update it with the specific details of your project.
