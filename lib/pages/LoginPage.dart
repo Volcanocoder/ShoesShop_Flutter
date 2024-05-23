@@ -4,12 +4,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:shoesShop/RegisterPage.dart';
+import 'RegisterPage.dart';
 import 'ShoppingBasket.dart';
 import 'StoreMainMenuPage.dart';
-import 'LoginResponseModel.dart';
-import 'db/database.dart';
-import 'models/base_models.dart';
+import '../models/LoginResponseModel.dart';
+import '../db/database.dart';
+import '../models/base_models.dart';
 
 /*class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});

@@ -6,15 +6,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'LoginPage.dart';
-import 'ShoppingBasket.dart';
-
-
-import 'BranchesPage.dart';
-import 'DescriptionPage.dart';
-import 'Product.dart';
-import 'ShopBottomNavigator.dart';
-import 'StoreMainMenuPage.dart';
+import 'pages/LoginPage.dart';
+import 'pages/ShoppingBasket.dart';
+import 'models/Product.dart';
+import 'widgets/ShopBottomNavigator.dart';
+import 'pages/StoreMainMenuPage.dart';
 
 void main() => runApp(MainMaterial());
 
@@ -23,6 +19,7 @@ class MainMaterial extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: '/login',
       home: LoginPage(),
       // home:LoginWidget(),
     );

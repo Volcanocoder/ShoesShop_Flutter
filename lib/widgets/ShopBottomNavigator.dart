@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import 'ShoppingBasket.dart';
-import 'StoreMainMenuPage.dart';
+import '../pages/ShoppingBasket.dart';
+import '../pages/StoreMainMenuPage.dart';
 
 
 class ShopBottomNagiv extends StatelessWidget {

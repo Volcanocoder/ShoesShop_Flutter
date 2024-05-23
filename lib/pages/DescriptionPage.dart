@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, non_constant_identifier_names, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation
 
 import 'package:flutter/material.dart';
-import 'Product.dart';
-import 'ShoppingBasketData.dart';
+import '../models/Product.dart';
+import '../models/ShoppingBasketData.dart';
 
 // ignore: must_be_immutable
 class DescriptionPage extends StatelessWidget {

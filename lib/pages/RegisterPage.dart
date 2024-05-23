@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'db/database.dart';
-import 'models/base_models.dart';
+import '../db/database.dart';
+import '../models/base_models.dart';
 
 class RegisterPage extends StatefulWidget {
   @override

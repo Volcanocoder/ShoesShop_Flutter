@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'Product.dart';
+import '../models/Product.dart';
 
 typedef OnRemovePressed = Function(int index);
 

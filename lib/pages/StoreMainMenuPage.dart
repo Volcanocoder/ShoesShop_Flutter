@@ -9,8 +9,8 @@ import 'ShoppingBasket.dart';
 
 import 'BranchesPage.dart';
 import 'DescriptionPage.dart';
-import 'Product.dart';
-import 'ShopBottomNavigator.dart';
+import '../models/Product.dart';
+import '../widgets/ShopBottomNavigator.dart';
 
 class Store extends StatefulWidget {
   const Store({super.key});
