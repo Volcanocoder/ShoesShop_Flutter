@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shoesShop/models/base_models.dart';
 
 import '../db/database.dart';
+import '../utils/userManager.dart';
 import 'RegisterPage.dart';
 
 
@@ -24,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
       userModel? user = await _databaseHelper.getUser(email, password);
       print("email : ${email} // password : ${password}");
       if (user != null) {
+        UserManager.setCurrentUser(user);
         Navigator.pushReplacementNamed(context, '/home');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(

@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:shoesShop/pages/ProfilePage.dart';
 
 import '../pages/ShoppingBasket.dart';
 import '../pages/StoreMainMenuPage.dart';
@@ -8,6 +9,8 @@ import '../pages/StoreMainMenuPage.dart';
 
 class ShopBottomNagiv extends StatelessWidget {
   const ShopBottomNagiv({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,15 @@ class ShopBottomNagiv extends StatelessWidget {
                     ));
                   },
                     child: const Icon(Icons.home,color:Colors.blueGrey)),
-                const Icon(Icons.person_outline,color:Colors.blueGrey),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).push(PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) {
+                          return ProfilePage();
+                        }
+                    ));
+                  },
+                    child: const Icon(Icons.person_outline,color:Colors.blueGrey)),
                 const Icon(Icons.search,color:Colors.blueGrey),
                 InkWell(
                   onTap: (){
