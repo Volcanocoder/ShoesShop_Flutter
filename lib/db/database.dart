@@ -17,7 +17,7 @@ class DatabaseHelper {
   }
 
   Future<Database> _initDatabase() async {
-    String path = join(await getDatabasesPath(), 'app_database.db');
+    String path = join(await getDatabasesPath(), 'app_database2.db');
     return openDatabase(
       path,
       version: 1,
@@ -27,20 +27,22 @@ class DatabaseHelper {
 
   Future<void> _onCreate(Database db, int version) async {
     await db.execute('''
-      CREATE TABLE users(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        email TEXT NOT NULL,
-        password TEXT NOT NULL
-      )
-    ''');
+    CREATE TABLE users(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT NOT NULL,
+      password TEXT NOT NULL,
+      fullName TEXT,
+      mobile TEXT
+    )
+  ''');
   }
 
   Future<int> insertUser(userModel user) async {
     final db = await database;
-    return await db!.insert('users', user.toJson());
+    return await db!.insert('users', user.toMap());
   }
 
-  Future<userModel?> getUser(String password, String email) async {
+  Future<userModel?> getUser(String email, String password) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db!.query(
       'users',
@@ -48,7 +50,7 @@ class DatabaseHelper {
       whereArgs: [email, password],
     );
     if (maps.isNotEmpty) {
-      return userModel.fromJson(maps.first);
+      return userModel.fromMap(maps.first);
     }
     return null;
   }

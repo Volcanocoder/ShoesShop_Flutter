@@ -6,6 +6,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:shoesShop/pages/RegisterPage.dart';
 import 'pages/LoginPage.dart';
 import 'pages/ShoppingBasket.dart';
 import 'models/Product.dart';
@@ -14,13 +15,18 @@ import 'pages/StoreMainMenuPage.dart';
 
 void main() => runApp(MainMaterial());
 
+
 class MainMaterial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/login',
-      home: LoginPage(),
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/register': (context) => RegisterPage(),
+        '/home': (context) => Store(),
+      },
       // home:LoginWidget(),
     );
   }

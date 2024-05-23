@@ -20,7 +20,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final DatabaseHelper _databaseHelper = DatabaseHelper();
 
   void _register() async {
-    final String username = _usernameController.text;
     final String password = _passwordController.text;
     final String mobile = _mobileController.text;
     final String email = _emailController.text;
@@ -30,10 +29,12 @@ class _RegisterPageState extends State<RegisterPage> {
       userModel user = userModel(
           email: email,
           password: password,
-          id: random.nextInt(800000).toString(),
           fullName: fullName,
           mobile: mobile);
       await _databaseHelper.insertUser(user);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('ثبت نام موفق !',textAlign: TextAlign.center,textDirection: TextDirection.rtl),
+      ));
       Navigator.pop(context);
     }
   }
