@@ -31,27 +31,29 @@ class _ShoppingBasketItemState extends State<ShoppingBasketItem> {
           textDirection: TextDirection.rtl,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 40, left: 20),
-              child: Image.network(
-                widget._product.imageUrl,
-                width: 100,
-                height: 100,
-              ),
-            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.only(right: 20,),
+                  child: Image.network(
+                    widget._product.imageUrl,
+                    fit: BoxFit.cover,
+                    width: 80,
+                    height: 80,
+                  ),
+                ),
+
                 Padding(
-                  padding: const EdgeInsets.only(top: 30, right: 20),
+                  padding: const EdgeInsets.only(top: 10, right: 20),
                   child: Text(
                     widget._product.productName,
                     style: const TextStyle(fontFamily: "Vazir", fontSize: 20),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 30),
+                  padding: const EdgeInsets.only(bottom: 10,right: 20),
                   child: Row(
                     textDirection: TextDirection.rtl,
                     children: <Widget>[
@@ -101,9 +103,11 @@ class _ShoppingBasketItemState extends State<ShoppingBasketItem> {
                         },
                         child: const Icon(Icons.delete_outline),
                       ),
-                      Text(
-                        widget._product.price,
-                        style: const TextStyle(fontFamily: "Vazir", fontSize: 16),
+                      Container(
+                        child: Text(
+                          widget._product.price,
+                          style: const TextStyle(fontFamily: "Vazir", fontSize: 16),
+                        ),
                       )
                     ],
                   ),

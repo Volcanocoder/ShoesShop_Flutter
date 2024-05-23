@@ -1,6 +1,6 @@
 
         {
-            "name": "flutter_sample",
+            "name": "shoesShop",
             "request": "launch",
             "type": "dart",
             "configurations": [
@@ -51,13 +51,13 @@
             ]
         },
         {
-            "name": "flutter_sample (profile mode)",
+            "name": "shoesShop (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "flutter_sample (release mode)",
+            "name": "shoesShop (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

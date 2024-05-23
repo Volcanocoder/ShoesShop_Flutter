@@ -4,11 +4,14 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:shoesShop/RegisterPage.dart';
 import 'ShoppingBasket.dart';
 import 'StoreMainMenuPage.dart';
 import 'LoginResponseModel.dart';
+import 'db/database.dart';
+import 'models/base_models.dart';
 
-class LoginWidget extends StatefulWidget {
+/*class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
 
   @override
@@ -206,5 +209,68 @@ class _LoginWidgetState extends State<LoginWidget> {
         ),
       ),
     ) as WidgetBuilder);
+  }
+}*/
+
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  final DatabaseHelper _databaseHelper = DatabaseHelper();
+
+  void _login() async {
+    final String username = _usernameController.text;
+    final String password = _passwordController.text;
+
+    if (username.isNotEmpty && password.isNotEmpty) {
+      userModel? user = await _databaseHelper.getUser(username, password);
+      if (user != null) {
+        Navigator.pushReplacementNamed(context, '/home');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Invalid username or password'),
+        ));
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('ورود')),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(labelText: 'Username'),
+            ),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(labelText: 'Password'),
+              obscureText: true,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _login,
+              child: Text('ورود'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterPage(),));
+              },
+              child: Text('ثبت نام'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

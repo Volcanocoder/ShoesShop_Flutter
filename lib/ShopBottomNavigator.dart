@@ -1,9 +1,9 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/StoreMainMenuPage.dart';
 
 import 'ShoppingBasket.dart';
+import 'StoreMainMenuPage.dart';
 
 
 class ShopBottomNagiv extends StatelessWidget {
