@@ -16,8 +16,8 @@ This is a simple store built using Flutter and developed by VolcanoCoder. This p
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/VolcanoCoder/flutter-store.git
-
+git clone https://github.com/Volcanocoder/ShoesShop_Flutter.git
+```
 
 2. Navigate to the project directory:
 
@@ -28,13 +28,13 @@ cd flutter-store
 
 flutter run
 
-Contribution
+## Contribution
 If you're interested, you can contribute to improving and expanding this project. Additionally, if you have any issues or suggestions, please feel free to share them with us.
 
-License
+## License
 This project is licensed under the MIT License. For more information, please see the LICENSE file.
 
-Contact
+## Contact
 For inquiries and to stay updated on the latest developments, please meseage us at: t.me/volcanocoder
 
 
